@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2021_10_05_042808) do
     t.string "first_name"
     t.string "last_name_kana"
     t.string "first_name_kana"
+    t.string "nickname"
+    t.text "introduction"
     t.string "password"
     t.string "image_id"
     t.boolean "is_deleted", default: false, null: false

@@ -18,10 +18,15 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
 table, th, td {
   border-style: none!important;
 }
 
 .nav-link {
   margin-right: 20px;
+}
+
+#word-family {
+    font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }

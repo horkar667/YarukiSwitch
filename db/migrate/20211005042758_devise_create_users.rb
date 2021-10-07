@@ -36,6 +36,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name_kana
       t.string :first_name_kana
+      t.string :nickname
+      t.text :introduction
       t.string :email
       t.string :password
       t.string :image_id

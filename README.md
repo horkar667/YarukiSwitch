@@ -42,4 +42,6 @@ https://docs.google.com/spreadsheets/d/1HRrb8qT9TXrldOQAB7swPwFYOtfxAUQ5Vqst9LaJ
 - IDE：Cloud9
 
 ## 使用素材
-・・・
+
+### ワードのフォント
+http://www.jiyu-kobo.co.jp/library/ygf/

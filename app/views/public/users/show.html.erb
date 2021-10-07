@@ -1,1 +1,56 @@
-会員詳細
+<main>
+  <div class="container px-5 px-sm-0 mt-5">
+    <div class="row">
+      <div class="col-md-3 bg-dark text-white border border-primary rounded shadow-lg">
+        <div class="text-center mt-3 rounded-circle">
+          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "", size:'100x100' %>
+        </div>
+        <div class="m-auto pb-3 w-50">
+          <div class="mt-3">
+            <% if @user.nickname %>
+              <%= @user.nickname %>
+            <% else %>
+              <%= @user.last_name %> <%= @user.first_name %>
+            <% end %>
+          </div>
+          <div class="mt-3"><% @user.introduction %></div>
+          <div class="mt-3">フォロー</div>
+          <div class="mt-3">フォロワー</div>
+          <div class="mt-3">いいね一覧</div>
+          <% if @user = current_user %>
+            <div class="mt-3"><%= link_to "プロフィール編集", edit_user_path(current_user) %></div>
+            <div class="mt-3">設定</div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-8 offset-md-1">
+        <% if @user = current_user %>
+          <%= form_with model:@word, url: words_path, method: :post, local:true do |f| %>
+            <div class="form-group form-inline">
+              <%= f.text_field :word, size: 70, class: "form-control mr-3" %>
+              <%= f.submit "Create Word",class: "btn btn-secondary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <h1 class="text-center">Words</h1>
+        <% end %>
+        <div id="word-index">
+          <% @words.each do |word| %>
+          <div class="container">
+            <div class="row">
+              <div id="word-family" class="col form-group">
+                <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
+              </div>
+              <div class="col-1">
+                <% if @user = current_user %>
+                  <%= link_to "", word_path(word), method: :delete, class: "far fa-trash-alt btn btn-outline-danger", data: {confirm: "「#{word.word}」を本当に削除しますか？"} %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
