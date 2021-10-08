@@ -1,12 +1,16 @@
 class Public::WordsController < ApplicationController
 
   def index
+    @words = Word.all
   end
 
   def show
+    @word = Word.find(params[:id])
+    @user = @word.user
   end
 
   def edit
+    @word = Word.find(params[:id])
   end
 
   def update

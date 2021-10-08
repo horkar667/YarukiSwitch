@@ -1,1 +1,22 @@
-ワード詳細
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-9">
+        <div class="mt-5 d-flex">
+          <div class="col-1">
+            <%= attachment_image_tag @user, :image, :fill, 40, 40, format: 'jpeg', fallback: "", class: "rounded-circle" %>
+          </div>
+          <div class="col">
+            <% if @user.nickname %>
+              <%= link_to @user.nickname, user_path(@user), class: "text-decoration-none" %>
+            <% else %>
+              <%= @user.last_name %> <%= @user.first_name %>
+            <% end %>
+          </div>
+          <div class="me-auto col-1">♡</div>
+        </div>
+        <h1 class="mt-5 text-center shadow-lg p-3"><%= @word.word %></h1>
+      </div>
+    </div>
+  </div>
+</div>
