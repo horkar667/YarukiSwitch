@@ -1,6 +1,7 @@
 <main>
   <div class="container px-5 px-sm-0 mt-5">
     <div class="row">
+      <!--ここから左側のプロフィール欄-->
       <div class="col-md-3 bg-dark text-white border border-primary rounded shadow-lg">
         <div class="text-center mt-3">
           <div class="mt-3">
@@ -24,8 +25,11 @@
           <% end %>
         </div>
       </div>
+      
+      <!--ここから右側のワード一覧やワード作成欄-->
       <div class="col-md-8 offset-md-1">
         <% if @user = current_user %>
+          <!--ワードの作成フォーム-->
           <%= form_with model:@word, url: words_path, method: :post, local:true do |f| %>
             <div class="form-group form-inline">
               <%= f.text_field :word, size: 70, class: "form-control mr-3" %>
@@ -36,6 +40,7 @@
           <h1 class="text-center">Words</h1>
         <% end %>
         <div id="word-index">
+          <!--ワード一覧-->
           <% @words.each do |word| %>
           <div class="container">
             <div class="row">
