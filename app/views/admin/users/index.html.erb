@@ -1,1 +1,45 @@
-admin 会員一覧
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-10">
+        <h1 class="mt-5 text-center">会員一覧</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-1">ID</th>
+              <th class="col-1">氏名</th>
+              <th class="col-2">ニックネーム</th>
+              <th class="col-2">メールアドレス</th>
+              <th class="col-1">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= user.id %>
+                </td>
+                <td>
+                  <%= link_to "#{user.last_name} #{user.first_name}", admin_path(user) %>
+                </td>
+                <td>
+                  <%= user.nickname %>
+                </td>
+                <td>
+                  <%= user.email %>
+                </td>
+                <td>
+                  <% if user.is_deleted = "false" %>
+                    <div class="text-primary">有効</div>
+                  <% else %>
+                    <div>退会</div>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
