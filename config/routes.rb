@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     root to: 'homes#top'
 
-    resources :words, except: [:new,:edit]
+    resources :words, except: [:new,:edit,:update]
   end
 
   devise_for :admin, controllers: {
@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    patch 'withdraw' => 'users#withdraw'
-    get 'users/:id' => 'users#show'
+    resources :users, only: [:show, :update]
     root to: 'users#index'
 
     resources :words, only: [:index, :show, :destroy]
