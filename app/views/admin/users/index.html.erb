@@ -29,7 +29,7 @@
                   <%= user.email %>
                 </td>
                 <td>
-                  <% if user.is_deleted = "false" %>
+                  <% if user.is_deleted == false %>
                     <div class="text-primary">有効</div>
                   <% else %>
                     <div>退会</div>
