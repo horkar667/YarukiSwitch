@@ -19,9 +19,13 @@
 @import 'font-awesome';
 
 
-table, th, td {
-  border-style: none!important;
+.devise-table {
+  th, td {
+    border-style: none!important;
+  }
 }
+
+
 
 .nav-link {
   margin-right: 20px;
