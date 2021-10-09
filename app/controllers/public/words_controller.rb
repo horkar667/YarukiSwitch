@@ -9,13 +9,6 @@ class Public::WordsController < ApplicationController
     @user = @word.user
   end
 
-  def edit
-    @word = Word.find(params[:id])
-  end
-
-  def update
-  end
-
   def create
     @word = Word.new(word_params)
     @word.user_id = current_user.id
