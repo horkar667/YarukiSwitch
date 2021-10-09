@@ -1,1 +1,24 @@
-admin ワード一覧
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-9">
+        <h1 class="mt-5 mb-3 text-center">Words</h1>
+        <% @words.each do |word| %>
+          <div class="py-3 d-flex border-top">
+            <div class="col-1">
+              <%= link_to admin_user_path(word.user) do %>
+                <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "" %>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= link_to word.word, word_path(word), class: "text-secondary text-left" %>
+            </div>
+            <div class="col-1">
+              <%= link_to "", admin_word_path(word), method: :delete, class: "far fa-trash-alt btn btn-outline-danger", data: {confirm: "「#{word.word}」を本当に削除しますか？"} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
