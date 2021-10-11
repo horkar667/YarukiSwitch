@@ -1,13 +1,29 @@
-トップ
-<% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-9">
+        <div class="main-field">
+          <div class="word-text">
+            <h1 id="text" class="text-center">
+              <%= render 'public/homes/top', random: @random %>
+            </h1>
+          </div>
+          <h1 class="first-text">
+            ボタンを押してみよう！<br><br>
+            ⇩
+          </h1>
+          <div class="switch">
+            <%= link_to "やる気スイッチ！", root_path, class: "btn btn-danger", remote: true %>
+          </div>
+        </div>
+        <script>
+            $('.switch').on('click',function(){
+              $('.first-text').hide();
+              $('.word-text').hide();
+              $('.word-text').fadeIn(1000);
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</main>

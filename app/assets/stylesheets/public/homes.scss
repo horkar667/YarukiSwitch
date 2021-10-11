@@ -1,3 +1,35 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// javascriptでワードを反映させる
+.word-text {
+  display: none;
+  h1 {
+      height: 500px;
+      line-height: 500px;
+      font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  }
+}
+
+
+// ボタンの固定
+.main-field {
+  .first-text {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    text-align: center;
+  }
+  position: relative;
+  .switch {
+    position: absolute;
+    top: 520px;
+    left: 50%;
+    // 中央揃えに必要↓
+    transform: translate(-50%);
+    width: 152.5px;
+  }
+}
