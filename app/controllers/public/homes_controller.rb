@@ -1,8 +1,13 @@
 class Public::HomesController < ApplicationController
 
   def top
-    @word = Word.where(user_id: current_user.id)
-    @random = @word.sample
+    if current_user
+      @words = Word.where(user_id: current_user.id)
+      @random = @words.sample
+    else
+      @words = Word.all
+      @random = @words.sample
+    end
   end
 
 end
