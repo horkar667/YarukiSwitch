@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     patch 'users/withdraw' => 'users#withdraw'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :followings, on: :member
+      get :followers, on: :member
+    end
     root to: 'homes#top'
 
     resources :words, except: [:new,:edit,:update]
