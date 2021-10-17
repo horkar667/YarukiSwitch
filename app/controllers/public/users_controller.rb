@@ -30,6 +30,11 @@ class Public::UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def favorites
+    @favorites = Favorite.where(user_id: params[:user_id]).pluck(:word_id)
+    @words = Word.find(@favorites)
+  end
+
   private
 
   def user_params

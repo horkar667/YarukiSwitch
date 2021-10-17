@@ -13,7 +13,11 @@
               <%= @user.last_name %> <%= @user.first_name %>
             <% end %>
           </div>
-          <div class="me-auto col-1">♡</div>
+          <div class="me-auto col-1">
+            <div class="favorite-button_<%= @word.id %>">
+              <%= render 'public/favorites/favorite', word: @word %>
+            </div>
+          </div>
         </div>
         <h1 class="mt-5 text-center shadow-lg p-3"><%= @word.word %></h1>
       </div>

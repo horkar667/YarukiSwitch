@@ -1,0 +1,19 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-9">
+        <h1 class="mt-5 text-center">いいね一覧</h1>
+        <% @words.each do |word| %>
+          <div class="mt-5 d-flex">
+            <div class="mr-3">
+            <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "", class: "rounded-circle" %>
+            </div>
+            <div>
+            <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
