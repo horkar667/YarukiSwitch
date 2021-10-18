@@ -27,5 +27,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_words, through: :favorites, source: :word
 
+  has_many :word_comments, dependent: :destroy
+
   attachment :image
 end

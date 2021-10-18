@@ -14,12 +14,34 @@
             <% end %>
           </div>
           <div class="me-auto col-1">
+            <!--いいねボタン-->
             <div class="favorite-button_<%= @word.id %>">
               <%= render 'public/favorites/favorite', word: @word %>
             </div>
+            <!--/-->
           </div>
         </div>
-        <h1 class="mt-5 text-center shadow-lg p-3"><%= @word.word %></h1>
+        <h1 class="mt-5 text-center shadow-lg p-3 mb-5"><%= @word.word %></h1>
+
+        <!--コメントのフォーム-->
+        <div class="new-comment">
+          <%= form_with(model:[@word, @comment], remote: true) do |f| %>
+            <div class= "d-flex">
+              <div class="col">
+                <%= f.text_area :comment, rows:'2',placeholder: "コメントをここに" , id: 'comment-form', class: "new-comment w-100" %>
+              </div>
+              <div class="col-1 mt-2">
+                <%= f.submit "送信", class: "btn btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!--/-->
+
+        <!--コメント一覧-->
+        <div id="word-comments">
+          <%= render 'public/word_comments/comments', comments: @comments %>
+        </div>
       </div>
     </div>
   </div>

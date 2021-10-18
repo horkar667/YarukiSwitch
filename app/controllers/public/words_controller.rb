@@ -6,7 +6,9 @@ class Public::WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
+    @comments = WordComment.where(word_id: @word)
     @user = @word.user
+    @comment = WordComment.new
   end
 
   def create

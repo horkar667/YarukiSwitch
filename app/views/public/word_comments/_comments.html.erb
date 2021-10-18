@@ -1,0 +1,24 @@
+<% comments.each do |comment| %>
+  <div class="d-flex mt-3">
+    <div class="col-1 mt-1">
+      <%= link_to user_path(comment.user) do %>
+        <%= attachment_image_tag comment.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "", class: "rounded-circle" %>
+      <% end %>
+    </div>
+    <div class="col text-break">
+      <%= link_to user_path(comment.user) do %>
+        <% if comment.user.nickname %>
+          <%= comment.user.nickname %>
+        <% else %>
+          <%= comment.user.last_name %> <%= comment.user.first_name %>
+        <% end %>
+      <% end %>
+      <br><%= comment.comment %>
+    </div>
+    <div class="col-1 mt-3">
+      <% if comment.user == current_user %>
+        <%= link_to "", word_word_comment_path(comment.word, comment), class: "far fa-trash-alt btn btn-outline-dark", method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

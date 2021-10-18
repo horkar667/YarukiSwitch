@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :words, except: [:new,:edit,:update] do
       resource :favorites, only: [:create, :destroy]
+      resources :word_comments, only: [:create, :destroy]
     end
   end
 
