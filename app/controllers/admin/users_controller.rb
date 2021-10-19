@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def index
-    @users = User.all
+    @users = @q.result
   end
 
   def show
@@ -13,7 +14,13 @@ class Admin::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to request.referrer || admin_root_path
   end
+  def search
+    @results = @q.result
+  end
 
+  def set_q
+    @q = User.ransack(params[:q])
+  end
    private
 
  	def user_params

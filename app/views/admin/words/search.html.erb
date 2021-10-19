@@ -12,7 +12,7 @@
     <div class="row">
       <div class="mx-auto col-9">
         <h1 class="mt-5 mb-3 text-center">Words</h1>
-        <% @words.each do |word| %>
+        <% @results.each do |word| %>
           <div class="py-3 d-flex border-top">
             <div class="col-1">
               <%= link_to admin_user_path(word.user) do %>
