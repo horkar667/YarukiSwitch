@@ -1,4 +1,5 @@
 class Public::WordsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def index
     @words = Word.all
@@ -22,6 +23,10 @@ class Public::WordsController < ApplicationController
     @word = Word.find(params[:id])
     @word.destroy
     redirect_to user_path(current_user)
+  end
+
+  def search
+    @results = @q.result
   end
 
       private

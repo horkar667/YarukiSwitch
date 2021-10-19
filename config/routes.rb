@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :words, except: [:new,:edit,:update] do
       resource :favorites, only: [:create, :destroy]
       resources :word_comments, only: [:create, :destroy]
+      collection do
+        get 'search'
+      end
     end
   end
 
@@ -28,10 +31,18 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users, only: [:show, :update]
+    resources :users, only: [:show, :update] do
+      collection do
+        get 'search'
+      end
+    end
     root to: 'users#index'
 
-    resources :words, only: [:index, :show, :destroy]
+    resources :words, only: [:index, :show, :destroy] do
+      collection do
+        get 'search'
+      end
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
