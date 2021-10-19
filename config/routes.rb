@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     patch 'users/withdraw' => 'users#withdraw'
+    get 'favorites' => 'favorites#index'
     resources :users, only: [:show, :edit, :update] do
       get :favorites
       resource :relationships, only: [:create, :destroy]

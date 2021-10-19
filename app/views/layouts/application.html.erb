@@ -24,6 +24,9 @@
                   <%= link_to " Words", words_path, class: "nav-link text-light" %>
                 </li>
                 <li>
+                  <%= link_to " ランキング", favorites_path, class: "nav-link text-light" %>
+                </li>
+                <li>
                   <%= link_to " Myページ", user_path(current_user), class: "nav-link text-light" %>
                 </li>
                 <li>
@@ -42,6 +45,9 @@
               <% else %>
                 <li>
                   <%= link_to " Words", words_path, class: "nav-link text-light" %>
+                </li>
+                <li>
+                  <%= link_to " ランキング", favorites_path, class: "nav-link text-light" %>
                 </li>
                 <li>
                   <%= link_to " 新規登録", new_user_registration_path, class: "nav-link text-light" %>
