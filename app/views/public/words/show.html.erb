@@ -10,7 +10,9 @@
             <% if @user.nickname %>
               <%= link_to @user.nickname, user_path(@user), class: "text-decoration-none" %>
             <% else %>
-              <%= @user.last_name %> <%= @user.first_name %>
+              <%= link_to user_path(@user), class: "text-decoration-none" do %>
+                <%= @user.last_name %> <%= @user.first_name %>
+              <% end %>
             <% end %>
           </div>
           <div class="me-auto col-1">
