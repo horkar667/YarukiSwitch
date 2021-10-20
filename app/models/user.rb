@@ -30,4 +30,9 @@ class User < ApplicationRecord
   has_many :word_comments, dependent: :destroy
 
   attachment :image
+
+  # 退会からむのis_deletedがfalseだったらtrueを返す
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end
