@@ -4,7 +4,7 @@
       <div class="mx-auto col-8 mt-5">
         <div class="d-flex">
           <div class="col-1">
-            <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "", class: "rounded-circle" %>
+            <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "motivation.jpg", class: "rounded-circle", size:'100x100' %>
           </div>
           <div class="text-center col">
             (<%= @user.last_name_kana %> <%= @user.first_name_kana %>)

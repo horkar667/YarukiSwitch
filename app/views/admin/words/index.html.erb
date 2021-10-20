@@ -16,7 +16,7 @@
           <div class="py-3 d-flex border-top">
             <div class="col-1">
               <%= link_to admin_user_path(word.user) do %>
-                <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "" %>
+                <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40' %>
               <% end %>
             </div>
             <div class="col">

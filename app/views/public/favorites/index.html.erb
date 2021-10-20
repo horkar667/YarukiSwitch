@@ -6,7 +6,7 @@
         <% @words.each do |word| %>
           <div class="mt-5 d-flex">
             <div class="mr-3">
-              <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "", class: "rounded-circle" %>
+              <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
             </div>
             <div class="col">
               <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>

@@ -11,7 +11,7 @@
               <%= @user.last_name %> <%= @user.first_name %>
             <% end %>
           </div>
-          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "", size:'100x100', class: "rounded-circle" %>
+          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "motivation.jpg", size:'100x100', class: "rounded-circle" %>
           <div class="border border-white rounded"><%= @user.introduction %></div>
         </div>
         <div class="m-auto pb-3 w-50">
