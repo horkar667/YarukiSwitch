@@ -12,10 +12,11 @@
             <% end %>
           </div>
           <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "motivation.jpg", size:'100x100', class: "rounded-circle" %>
-          <div class="border border-white rounded"><%= @user.introduction %></div>
+          <% if @user.introduction %>
+            <div class="border border-white rounded"><%= @user.introduction %></div>
+          <% end %>
         </div>
         <div class="m-auto pb-3 w-50">
-          <div class="mt-3"><% @user.introduction %></div>
           <div id="follow-count">
             <%= render 'public/relationships/follow_count', user: @user %>
           </div>
@@ -34,7 +35,7 @@
 
       <!--ここから右側のワード一覧やワード作成欄-->
       <div class="col-md-8 offset-md-1">
-        <% if @user = current_user %>
+        <% if @user == current_user %>
           <!--ワードの作成フォーム-->
           <%= form_with model:@word, url: words_path, method: :post, local:true do |f| %>
             <div class="form-group form-inline">
@@ -43,7 +44,7 @@
             </div>
           <% end %>
         <% else %>
-          <h1 class="text-center">Words</h1>
+          <h1 class="text-center mb-3">Words</h1>
         <% end %>
         <div id="word-index">
           <!--ワード一覧-->
