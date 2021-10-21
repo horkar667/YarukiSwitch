@@ -35,34 +35,38 @@
 
       <!--ここから右側のワード一覧やワード作成欄-->
       <div class="col-md-8 offset-md-1">
-        <% if @user == current_user %>
-          <!--ワードの作成フォーム-->
-          <%= form_with model:@word, url: words_path, method: :post, local:true do |f| %>
-            <div class="form-group form-inline">
-              <%= f.text_field :word, size: 70, class: "form-control mr-3" %>
-              <%= f.submit "Create Word",class: "btn btn-secondary" %>
-            </div>
+        <% if @user.is_deleted == false %> <!--退会している場合ワード一覧を表示しない-->
+          <% if @user == current_user %>
+            <!--ワードの作成フォーム-->
+            <%= form_with model:@word, url: words_path, method: :post, local:true do |f| %>
+              <div class="form-group form-inline">
+                <%= f.text_field :word, size: 70, class: "form-control mr-3" %>
+                <%= f.submit "Create Word",class: "btn btn-secondary" %>
+              </div>
+            <% end %>
+          <% else %>
+            <h1 class="text-center mb-3">Words</h1>
           <% end %>
-        <% else %>
-          <h1 class="text-center mb-3">Words</h1>
-        <% end %>
-        <div id="word-index">
-          <!--ワード一覧-->
-          <% @words.each do |word| %>
-          <div class="container">
-            <div class="row">
-              <div id="word-family" class="col form-group">
-                <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
-              </div>
-              <div class="col-1">
-                <% if @user = current_user %>
-                  <%= link_to "", word_path(word), method: :delete, class: "far fa-trash-alt btn btn-outline-danger", data: {confirm: "「#{word.word}」を本当に削除しますか？"} %>
-                <% end %>
+          <div id="word-index">
+            <!--ワード一覧-->
+            <% @words.each do |word| %>
+            <div class="container">
+              <div class="row">
+                <div id="word-family" class="col form-group">
+                  <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
+                </div>
+                <div class="col-1">
+                  <% if @user = current_user %>
+                    <%= link_to "", word_path(word), method: :delete, class: "far fa-trash-alt btn btn-outline-danger", data: {confirm: "「#{word.word}」を本当に削除しますか？"} %>
+                  <% end %>
+                </div>
               </div>
             </div>
+            <% end %>
           </div>
-          <% end %>
-        </div>
+        <% else %>
+          退会済みです
+        <% end %>
       </div>
     </div>
   </div>

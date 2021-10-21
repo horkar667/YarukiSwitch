@@ -4,17 +4,19 @@
       <div class="mx-auto col-9">
         <h1 class="text-center mt-5 text-warning"><strong>ランキング</strong></h1>
         <% @words.each do |word| %>
-          <div class="mt-5 d-flex">
-            <div class="mr-3">
-              <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
+          <% if word.user.is_deleted == false %>
+            <div class="mt-5 d-flex">
+              <div class="mr-3">
+                <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
+              </div>
+              <div class="col">
+                <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
+              </div>
+              <div class="col-1">
+                <i class="fas fa-heart" style="color:red;"><%= word.favorites.count %></i>
+              </div>
             </div>
-            <div class="col">
-              <%= link_to word.word, word_path(word), class: "btn btn-outline-secondary text-left shadow-sm" %>
-            </div>
-            <div class="col-1">
-              <i class="fas fa-heart" style="color:red;"><%= word.favorites.count %></i>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
