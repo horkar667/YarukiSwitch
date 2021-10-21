@@ -1,4 +1,5 @@
 class Public::WordsController < ApplicationController
+  before_action :require_login, only: [:show]
   before_action :set_q, only: [:index, :search]
 
   def index
