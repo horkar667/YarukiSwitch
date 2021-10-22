@@ -3,9 +3,18 @@
     <div class="row">
       <div class="mx-auto col-9">
         <h1 class="text-center mt-5 text-warning"><strong>ランキング</strong></h1>
-        <% @words.each do |word| %>
+        <% lastFavorite = 0 %>
+        <% j = 0 %>
+        <% @words.first(30).each do |word| %>
           <% if word.user.is_deleted == false %>
             <div class="mt-5 d-flex">
+            <% if lastFavorite == word.favorites.count %>
+              <div class="mt-2">第<%= j %>位</div>
+            <% else %>
+              <% j += 1 %>
+              <div class="mt-2">第<%= j %>位</div>
+              <% lastFavorite = word.favorites.count %>
+            <% end %>
               <div class="mr-3">
                 <%= attachment_image_tag word.user, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
               </div>
