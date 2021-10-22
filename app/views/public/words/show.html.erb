@@ -44,6 +44,9 @@
         <div id="word-comments">
           <%= render 'public/word_comments/comments', comments: @comments %>
         </div>
+        <div class="d-flex justify-content-center mt-3">
+          <%= paginate @comments %>
+        </div>
       </div>
     </div>
   </div>

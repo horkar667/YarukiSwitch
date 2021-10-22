@@ -3,7 +3,7 @@ class Admin::WordsController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @words = Word.all
+    @words = Word.all.page(params[:page]).per(30)
   end
 
   def show
@@ -17,6 +17,6 @@ class Admin::WordsController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page]).per(30)
   end
 end

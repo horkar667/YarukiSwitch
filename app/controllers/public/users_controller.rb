@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @word = Word.new
-    @words = Word.where(user_id: params[:id])
+    @words = Word.where(user_id: params[:id]).page(params[:page]).per(20)
   end
 
   def edit
@@ -24,12 +24,12 @@ class Public::UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(30)
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(30)
   end
 
   def favorites

@@ -3,12 +3,12 @@ class Public::WordsController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @words = Word.all
+    @words = Word.all.page(params[:page]).per(30)
   end
 
   def show
     @word = Word.find(params[:id])
-    @comments = WordComment.where(word_id: @word)
+    @comments = WordComment.where(word_id: @word).page(params[:page]).per(30)
     @user = @word.user
     @comment = WordComment.new
   end
@@ -27,7 +27,7 @@ class Public::WordsController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page]).per(30)
   end
 
       private
