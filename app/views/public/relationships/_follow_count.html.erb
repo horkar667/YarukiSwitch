@@ -1,2 +1,2 @@
-<div class="mt-3"><%= link_to user.followings.count, followings_user_path(user) %> フォロー</div>
-<div class="mt-3"><%= link_to user.followers.count, followers_user_path(user) %> フォロワー</div>
+<div class="mt-3"><%= link_to "#{user.followings.count} フォロー", followings_user_path(user), class: 'text-light' %></div>
+<div class="mt-3"><%= link_to "#{user.followers.count} フォロワー", followers_user_path(user), class: 'text-light' %></div>
