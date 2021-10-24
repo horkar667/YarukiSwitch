@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @favorites = Favorite.where(user_id: params[:user_id]).pluck(:word_id)
-    @words = Word.find(@favorites)
+    @words = Word.where(id: @favorites).page(params[:page]).per(30)
   end
 
   private
