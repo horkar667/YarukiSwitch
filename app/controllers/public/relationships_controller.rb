@@ -4,6 +4,7 @@ class Public::RelationshipsController < ApplicationController
     following = current_user.relationships.build(follower_id: params[:user_id])
     following.save
     @user = User.find_by(id: params[:user_id])
+    @user.create_notification_follow!(current_user)
   end
 
   def destroy

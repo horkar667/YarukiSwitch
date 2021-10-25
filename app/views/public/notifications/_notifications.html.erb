@@ -1,0 +1,46 @@
+<% notifications.each do |notification| %>
+  <% visitor = notification.visitor_id %>
+  <% visited = notification.visited_id %>
+  <div class="col-md-6 mx-auto">
+    <div class="form-inline">
+      <span>
+        <%= link_to user_path(visitor) do %>
+          <%= attachment_image_tag notification.visitor, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
+          <strong>
+            <% if notification.visitor.nickname %>
+              <%= notification.visitor.nickname %>
+            <% else %>
+              <%= notification.visitor.first_name %>
+            <% end %>
+          </strong>
+        <% end %>さんが
+
+        <% case notification.action %>
+        <% when 'follow' then %>
+          あなたをフォローしました
+        <% when 'like' then %>
+          <%= link_to 'あなたの投稿', notification.word, style: "font-weight: bold;" %>
+          にいいねしました
+        <% when 'comment' then %>
+          <% if notification.word.user_id == visited %>
+            <%= link_to "あなたの投稿", notification.word, style: "font-weight: bold;" %>
+          <% else %>
+            <span>
+              <%= link_to word_path(notification.word) do %>
+                <%= attachment_image_tag notification.visitor, :image, :fill, 40, 40, format: 'jpeg', fallback: "motivation.jpg", size:'40x40', class: "rounded-circle" %>
+                <strong>
+                  <%= notification.word.user.first_name + 'さんの投稿' %>
+                </strong>
+              <% end %>
+            </span>
+          <% end %>
+          にコメントしました
+          <p class="text-muted mb-0">
+            <%= WordComment.find_by(id: notification.comment_id)&.comment %>
+          </p>
+        <% end %>
+      </span>
+    </div>
+  </div>
+  <hr>
+<% end %>

@@ -20,6 +20,18 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <li class="nav-link">
+                  <%= link_to(notifications_path) do %>
+                    <% if unchecked_notifications.any? %>
+                      <span class="fa-stack">
+                        <i class="far fa-bell fa-lg fa-stack-2x ml-2 text-light" style="font-size: 1.5em;" ></i>
+                        <i class="fas fa-circle n-circle ml-2 fa-stack-1x"></i>
+                      </span>
+                    <% else %>
+                      <i class="far fa-bell fa-lg text-light" style="font-size: 1.5em;"></i>
+                    <% end %>
+                  <% end %>
+                </li>
                 <li>
                   <%= link_to " Words", words_path, class: "nav-link text-light" %>
                 </li>

@@ -6,6 +6,8 @@ class Public::FavoritesController < ApplicationController
 
   def create
     @favorite = current_user.favorites.create(word_id: params[:word_id])
+    word = Word.find(params[:word_id])
+    word.create_notification_like!(current_user)
   end
 
   def destroy

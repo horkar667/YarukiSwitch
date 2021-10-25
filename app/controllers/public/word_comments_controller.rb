@@ -4,6 +4,8 @@ class Public::WordCommentsController < ApplicationController
     comment = current_user.word_comments.new(word_comment_params)
     comment.word_id = @word.id
     comment.save
+    word = comment.word
+    word.create_notification_comment!(current_user, comment.id)
   end
 
   def destroy
