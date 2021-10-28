@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 2021_10_24_005642) do
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "word_id"
-    t.integer "comment_id"
+    t.integer "word_comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+    t.index ["word_comment_id"], name: "index_notifications_on_word_comment_id"
     t.index ["word_id"], name: "index_notifications_on_word_id"
   end
 

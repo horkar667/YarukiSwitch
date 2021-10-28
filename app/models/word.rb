@@ -33,18 +33,18 @@ class Word < ApplicationRecord
     end
   end
 
-  def create_notification_comment!(current_user, comment_id)
+  def create_notification_comment!(current_user, word_comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = WordComment.select(:user_id).where(word_id: id).find_by(user_id: current_user)
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids
+    save_notification_comment!(current_user, word_comment_id, user_id) if temp_ids
   end
 
-  def save_notification_comment!(current_user, comment_id, visited_id)
+  def save_notification_comment!(current_user, word_comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       word_id: id,
-      comment_id: comment_id,
+      word_comment_id: word_comment_id,
       visited_id: visited_id,
       action: 'comment'
     )
