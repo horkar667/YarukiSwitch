@@ -3,7 +3,7 @@ class Admin::WordsController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @words = Word.all.page(params[:page]).per(30)
+    @words = Kaminari.paginate_array(Word.includes(:unfavorite_users).sort {|a,b| b.unfavorite_users.size <=> a.unfavorite_users.size}).page(params[:page]).per(30)
   end
 
   def show

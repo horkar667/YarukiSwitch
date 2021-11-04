@@ -5,6 +5,9 @@ class Word < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
+  has_many :unfavorites, dependent: :destroy
+  has_many :unfavorite_users, through: :unfavorites, source: :user
+
   has_many :word_comments, dependent: :destroy
 
   has_many :notifications, dependent: :destroy
@@ -13,6 +16,10 @@ class Word < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def unfavorited_by?(user)
+    unfavorites.where(user_id: user.id).exists?
   end
 
   def create_notification_like!(current_user)

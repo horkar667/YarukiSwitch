@@ -22,6 +22,13 @@
             </div>
             <!--/-->
           </div>
+          <!--バットボタン-->
+          <div class="me-auto col-1">
+            <div class="unfavorite-button_<%= @word.id %>">
+              <%= render 'public/unfavorites/unfavorite', word: @word %>
+            </div>
+          </div>
+          <!--/-->
         </div>
         <h1 class="mt-5 text-center shadow-lg p-3 mb-5"><%= @word.word %></h1>
 

@@ -23,6 +23,9 @@
               <%= link_to word.word, admin_word_path(word), class: "text-secondary text-left" %>
             </div>
             <div class="col-1">
+              <i class="fas fa-thumbs-down"><%= word.unfavorites.count %></i>
+            </div>
+            <div class="col-1">
               <%= link_to "", admin_word_path(word), method: :delete, class: "far fa-trash-alt btn btn-outline-danger", data: {confirm: "「#{word.word}」を本当に削除しますか？"} %>
             </div>
           </div>

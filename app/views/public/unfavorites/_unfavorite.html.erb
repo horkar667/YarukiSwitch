@@ -1,0 +1,13 @@
+<% if word.unfavorited_by?(current_user) %>
+  <p>
+    <%= link_to word_unfavorites_path(word), method: :delete, remote: true do %>
+      <i class="fas fa-thumbs-down" style="color:purple;"><%= word.unfavorites.count %></i>
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to word_unfavorites_path(word), method: :post, remote: true do %>
+      <i class="fas fa-thumbs-down"><%= word.unfavorites.count %></i>
+    <% end %>
+  </p>
+<% end %>
