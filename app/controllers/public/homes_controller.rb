@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
         @words = Word.all
         @random = @words.sample
       when "r2"
-        @words = Word.where(id: current_user)
+        @words = Word.where(user_id: current_user)
         @random = @words.sample
       when "r3"
         @words = Word.find(Favorite.where(user_id: current_user).pluck(:word_id))
