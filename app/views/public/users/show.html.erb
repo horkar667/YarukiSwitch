@@ -24,6 +24,25 @@
           <% if @user == current_user %>
             <div class="mt-3"><%= link_to "プロフィール編集", edit_user_path(current_user), class: 'text-light' %></div>
             <div class="mt-3"><%= link_to "アカウント編集", edit_user_registration_path, class: 'text-light' %></div>
+            <div class="mt-3"><a class="setting">トップ画面設定</a></div>
+            <div class="setting-action">
+              <%= form_with model: @user,url: user_path(@user), method: :patch, local: true  do |f| %>
+                <%= f.radio_button :action, :r1 %>
+                <%= f.label :action, "全て" %><br>
+                <%= f.radio_button :action, :r2 %>
+                <%= f.label :action, "投稿のみ" %><br>
+                <%= f.radio_button :action, :r3 %>
+                <%= f.label :action, "いいねのみ" %><br>
+                <%= f.radio_button :action, :r4 %>
+                <%= f.label :action, "投稿といいね" %>
+                <%= f.submit "更新" %>
+              <% end %>
+            </div>
+            <script>
+              $('.setting').on('click',function(){
+                $('.setting-action').slideToggle();
+              });
+            </script>
           <% else %>
             <div id="follow-button">
               <%= render "public/relationships/follow", user: @user %>
