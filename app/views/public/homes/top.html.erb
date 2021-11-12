@@ -1,34 +1,28 @@
 <main>
-  <div class="container">
-    <div class="row">
-      <div class="mx-auto col-9">
-        <div class="main-field">
-          <h1 id="text" class="word-text">
-            <%= render 'public/homes/top', random: @random %>
-          </h1>
-          <% if current_user %>
-            <h1 class="first-text">
-              スタート!<br><br>
-              ⇩
-            </h1>
-          <% else %>
-            <h1 class="first-text">
-              ボタンを押してみよう！<br><br>
-              ⇩
-            </h1>
-          <% end %>
-          <div class="switch">
-            <%= link_to "やる気スイッチ！", root_path, class: "btn btn-danger", remote: true %>
-          </div>
-        </div>
-        <script>
-            $('.switch').on('click',function(){
-              $('.first-text').hide();
-              $('.word-text').hide();
-              $('.word-text').fadeIn(1000);
-            });
-        </script>
-      </div>
+  <div class="main-field">
+    <h1 id="text" class="word-text">
+      <%= render 'public/homes/top', random: @random %>
+    </h1>
+    <% if current_user %>
+      <h1 class="first-text">
+        スタート!<br><br>
+        ⇩
+      </h1>
+    <% else %>
+      <h1 class="first-text">
+        ボタンを押してみよう！<br><br>
+        ⇩
+      </h1>
+    <% end %>
+    <div class="switch">
+      <%= link_to "やる気スイッチ！", root_path, class: "btn btn-danger", remote: true %>
     </div>
   </div>
+  <script>
+      $('.switch').on('click',function(){
+        $('.first-text').hide();
+        $('.word-text').hide();
+        $('.word-text').fadeIn(1000);
+      });
+  </script>
 </main>
