@@ -12,7 +12,7 @@
             <% end %>
           </div>
           <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "motivation.jpg", size:'100x100', class: "rounded-circle" %>
-          <% if @user.introduction %>
+          <% if @user.introduction && @user.introduction != "" %>
             <div class="border border-white rounded"><%= @user.introduction %></div>
           <% end %>
         </div>
