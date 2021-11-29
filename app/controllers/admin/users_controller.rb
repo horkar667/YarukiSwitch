@@ -15,13 +15,13 @@ class Admin::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to request.referrer || admin_root_path
   end
-  
+
   def search
     @results = @q.result.page(params[:page]).per(30)
   end
 
    private
-   
+
   def set_q
     @q = User.ransack(params[:q])
   end
