@@ -20,13 +20,13 @@ class Admin::UsersController < ApplicationController
     @results = @q.result.page(params[:page]).per(30)
   end
 
-   private
+  private
 
   def set_q
     @q = User.ransack(params[:q])
   end
 
- 	def user_params
- 	  params.require(:user).permit(:is_deleted)
- 	end
+  def user_params
+    params.require(:user).permit(:is_deleted)
+  end
 end

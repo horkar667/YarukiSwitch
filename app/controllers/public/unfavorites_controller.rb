@@ -1,5 +1,4 @@
 class Public::UnfavoritesController < ApplicationController
-
   def create
     @unfavorite = current_user.unfavorites.create(word_id: params[:word_id])
   end

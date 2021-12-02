@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   def set_q
     @q = Word.ransack(params[:q])
   end

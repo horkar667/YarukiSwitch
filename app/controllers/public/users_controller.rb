@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     redirect_to user_path(current_user)
-    flash[:notice]="You have updated user successfully."
+    flash[:notice] = "You have updated user successfully."
   end
 
   def withdraw

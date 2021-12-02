@@ -30,7 +30,7 @@ class Public::WordsController < ApplicationController
     @results = @q.result.page(params[:page]).per(30)
   end
 
-      private
+  private
 
   def word_params
     params.require(:word).permit(:word)

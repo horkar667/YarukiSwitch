@@ -1,5 +1,4 @@
 class Public::HomesController < ApplicationController
-
   def top
     if current_user
       case current_user.action
@@ -23,5 +22,4 @@ class Public::HomesController < ApplicationController
       @random = @words.sample
     end
   end
-
 end

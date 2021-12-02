@@ -1,5 +1,4 @@
 class Public::RelationshipsController < ApplicationController
-
   def create
     following = current_user.relationships.build(follower_id: params[:user_id])
     following.save
@@ -12,5 +11,4 @@ class Public::RelationshipsController < ApplicationController
     following.destroy
     @user = User.find_by(id: params[:user_id])
   end
-
 end
