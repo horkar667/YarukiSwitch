@@ -13,7 +13,7 @@ describe '投稿のテスト' do
       end
       it '投稿されたものが表示されているか' do
         (1..5).each do |i|
-	        Word.create(word:'hoge'+i.to_s)
+	        Word.create(word: 'hoge'+i.to_s)
         end
 	      Word.all.each_with_index do |word|
           expect(page).to have_content word.word
@@ -24,7 +24,7 @@ describe '投稿のテスト' do
   end
 
   describe 'Word詳細画面のテスト' do
-	  let!(:word) { create(:word,word:'hoge') }
+	  let!(:word) { create(:word, word: 'hoge') }
     before do
       visit word_path(word)
     end

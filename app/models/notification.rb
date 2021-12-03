@@ -1,5 +1,6 @@
 class Notification < ApplicationRecord
-  default_scope -> { order(created_at: :desc) } #デフォルトの並び順を「作成日時の降順」で指定
+  # デフォルトの並び順を「作成日時の降順」で指定
+  default_scope -> { order(created_at: :desc) }
   belongs_to :word, optional: true
   belongs_to :word_comment, optional: true
 

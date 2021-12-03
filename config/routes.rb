@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
     root to: 'homes#top'
 
-    resources :words, except: [:new,:edit,:update] do
+    resources :words, except: [:new, :edit, :update] do
       resource :favorites, only: [:create, :destroy]
       resource :unfavorites, only: [:create, :destroy]
       resources :word_comments, only: [:create, :destroy]

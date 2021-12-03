@@ -14,7 +14,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.before(:each, type: :system) do #Capybaraが動作するためのドライバ（Rack::Test）設定
+  # Capybaraが動作するためのドライバ（Rack::Test）設定
+  config.before(:each, type: :system) do
     driven_by :rack_test
   end
   # rspec-expectations config goes here. You can use an alternate
